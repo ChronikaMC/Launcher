@@ -124,8 +124,8 @@ document.getElementById('launch_button').addEventListener('click', async e => {
             }
         }
     } catch(err) {
-        loggerLanding.error('Unhandled error in during launch process.', err)
-        showLaunchFailure('Error During Launch', 'See console (CTRL + Shift + i) for more details.')
+        loggerLanding.error('Kezeletlen hiba az indítási folyamat közben.', err)
+        showLaunchFailure('Hiba Indítás Közben', 'Lásd a konzolban (CTRL + Shift + i) a további részleteket.')
     }
 })
 
@@ -145,14 +145,15 @@ document.getElementById('avatarOverlay').onclick = async e => {
 
 // Bind selected account
 function updateSelectedAccount(authUser){
-    let username = 'No Account Selected'
+    let username = 'Nincs fiók kiválasztva'
     if(authUser != null){
         if(authUser.displayName != null){
             username = authUser.displayName
+            document.getElementById('avatarImage').style.backgroundImage = `url('https://portal.chronika.hu/api/skinrender.php?username=${authUser.displayName}')`
         }
-        if(authUser.uuid != null){
+        /*if(authUser.uuid != null){
             document.getElementById('avatarContainer').style.backgroundImage = `url('https://mc-heads.net/body/${authUser.uuid}/right')`
-        }
+        }*/
     }
     user_text.innerHTML = username
 }
@@ -165,14 +166,14 @@ function updateSelectedServer(serv){
     }
     ConfigManager.setSelectedServer(serv != null ? serv.rawServer.id : null)
     ConfigManager.save()
-    server_selection_button.innerHTML = '\u2022 ' + (serv != null ? serv.rawServer.name : 'No Server Selected')
+    server_selection_button.innerHTML = '\u2022 ' + (serv != null ? serv.rawServer.name : 'Nincs szerver kiválasztva')
     if(getCurrentView() === VIEWS.settings){
         animateSettingsTabRefresh()
     }
     setLaunchEnabled(serv != null)
 }
 // Real text is set in uibinder.js on distributionIndexDone.
-server_selection_button.innerHTML = '\u2022 Loading..'
+server_selection_button.innerHTML = '\u2022 Betöltés..'
 server_selection_button.onclick = async e => {
     e.target.blur()
     await toggleServerSelection(true)
@@ -180,7 +181,7 @@ server_selection_button.onclick = async e => {
 
 // Update Mojang Status Color
 const refreshMojangStatuses = async function(){
-    loggerLanding.info('Refreshing Mojang Statuses..')
+    loggerLanding.info('Mojang Információ Frissítése..')
 
     let status = 'grey'
     let tooltipEssentialHTML = ''
@@ -191,7 +192,7 @@ const refreshMojangStatuses = async function(){
     if(response.responseStatus === RestResponseStatus.SUCCESS) {
         statuses = response.data
     } else {
-        loggerLanding.warn('Unable to refresh Mojang service status.')
+        loggerLanding.warn('Nem sikerült lekérni a Mojang szervereinek állapotát.')
         statuses = MojangRestAPI.getDefaultStatuses()
     }
     
@@ -240,21 +241,21 @@ const refreshMojangStatuses = async function(){
 }
 
 const refreshServerStatus = async (fade = false) => {
-    loggerLanding.info('Refreshing Server Status')
+    loggerLanding.info('Szerver állapotának frissítése')
     const serv = (await DistroAPI.getDistribution()).getServerById(ConfigManager.getSelectedServer())
 
-    let pLabel = 'SERVER'
+    let pLabel = 'SZERVER'
     let pVal = 'OFFLINE'
 
     try {
 
         const servStat = await getServerStatus(47, serv.hostname, serv.port)
         console.log(servStat)
-        pLabel = 'PLAYERS'
+        pLabel = 'JÁTÉKOSOK'
         pVal = servStat.players.online + '/' + servStat.players.max
 
     } catch (err) {
-        loggerLanding.warn('Unable to refresh server status, assuming offline.')
+        loggerLanding.warn('Nem sikerült lekérni a szerver állapotát, feltehetőleg offline.')
         loggerLanding.debug(err)
     }
     if(fade){
@@ -304,7 +305,7 @@ function showLaunchFailure(title, desc){
  */
 async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
 
-    setLaunchDetails('Checking system info..')
+    setLaunchDetails('Rendszerinformáció ellenőrzése..')
     toggleLaunchArea(true)
     setLaunchPercentage(0, 100)
 
@@ -317,30 +318,30 @@ async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
         // If the result is null, no valid Java installation was found.
         // Show this information to the user.
         setOverlayContent(
-            'No Compatible<br>Java Installation Found',
-            `In order to join WesterosCraft, you need a 64-bit installation of Java ${effectiveJavaOptions.suggestedMajor}. Would you like us to install a copy?`,
-            'Install Java',
-            'Install Manually'
+            'Nem található<br>Kompatibilis Java telepítés',
+            `Ahhoz hogy elindítsd a játékot, 64 bites Java ${effectiveJavaOptions.suggestedMajor} szükséges. Feltelepítsük neked?`,
+            'Java Telepítése',
+            'Manuális Telepítés'
         )
         setOverlayHandler(() => {
-            setLaunchDetails('Preparing Java Download..')
+            setLaunchDetails('Java letöltés előkészítése..')
             toggleOverlay(false)
             
             try {
                 downloadJava(effectiveJavaOptions, launchAfter)
             } catch(err) {
-                loggerLanding.error('Unhandled error in Java Download', err)
-                showLaunchFailure('Error During Java Download', 'See console (CTRL + Shift + i) for more details.')
+                loggerLanding.error('Kezeletlen hiba Java letöltés közben', err)
+                showLaunchFailure('Hiba történt java letöltés közben', 'Lásd a konzolban (CTRL + Shift + i) a további részleteket.')
             }
         })
         setDismissHandler(() => {
             $('#overlayContent').fadeOut(250, () => {
                 //$('#overlayDismiss').toggle(false)
                 setOverlayContent(
-                    'Java is Required<br>to Launch',
-                    `A valid x64 installation of Java ${effectiveJavaOptions.suggestedMajor} is required to launch.<br><br>Please refer to our <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a> for instructions on how to manually install Java.`,
-                    'I Understand',
-                    'Go Back'
+                    'Java szükséges<br>az indításhoz',
+                    `Egy érvényes x64-es Java ${effectiveJavaOptions.suggestedMajor} szükséges az indításhoz.<br><br>Részleteket a <a href="https://github.com/ChronikaMC/Launcher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Dokumentációnkban</a> találod a Java manuális telepítéséhez.`,
+                    'Értem',
+                    'Vissza'
                 )
                 setOverlayHandler(() => {
                     toggleLaunchArea(false)
@@ -385,7 +386,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
         effectiveJavaOptions.distribution)
 
     if(asset == null) {
-        throw new Error('Failed to find OpenJDK distribution.')
+        throw new Error('Nem sikerült lekérni a legfrisebb OpenJDK letöltést.')
     }
 
     let received = 0
@@ -396,11 +397,11 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     setDownloadPercentage(100)
 
     if(received != asset.size) {
-        loggerLanding.warn(`Java Download: Expected ${asset.size} bytes but received ${received}`)
+        loggerLanding.warn(`Java Letöltés: Várt ${asset.size} byte helyett ${received} byte érkezett.`)
         if(!await validateLocalFile(asset.path, asset.algo, asset.hash)) {
-            log.error(`Hashes do not match, ${asset.id} may be corrupted.`)
+            log.error(`Hashek nem egyeznek, ${asset.id} sérült lehet.`)
             // Don't know how this could happen, but report it.
-            throw new Error('Downloaded JDK has bad hash, file may be corrupted.')
+            throw new Error('Letöltött JDK nem jó hash-t adott eredményül, valószínűleg hibás a fájl.')
         }
     }
 
@@ -409,7 +410,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     remote.getCurrentWindow().setProgressBar(2)
 
     // Wait for extration to complete.
-    const eLStr = 'Extracting Java'
+    const eLStr = 'Java Kicsomagolása'
     let dotStr = ''
     setLaunchDetails(eLStr)
     const extractListener = setInterval(() => {
@@ -431,7 +432,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     ConfigManager.save()
 
     clearInterval(extractListener)
-    setLaunchDetails('Java Installed!')
+    setLaunchDetails('Java Telepítve!')
 
     // TODO Callback hell
     // Refactor the launch functions
@@ -456,7 +457,7 @@ async function dlAsync(login = true) {
 
     const loggerLaunchSuite = LoggerUtil.getLogger('LaunchSuite')
 
-    setLaunchDetails('Loading server information..')
+    setLaunchDetails('Szerver információk betöltése..')
 
     let distro
 
@@ -473,12 +474,12 @@ async function dlAsync(login = true) {
 
     if(login) {
         if(ConfigManager.getSelectedAccount() == null){
-            loggerLanding.error('You must be logged into an account.')
+            loggerLanding.error('Jelentkezz be egy fiókba.')
             return
         }
     }
 
-    setLaunchDetails('Please wait..')
+    setLaunchDetails('Kérlek várj..')
     toggleLaunchArea(true)
     setLaunchPercentage(0, 100)
 
@@ -493,18 +494,18 @@ async function dlAsync(login = true) {
     fullRepairModule.spawnReceiver()
 
     fullRepairModule.childProcess.on('error', (err) => {
-        loggerLaunchSuite.error('Error during launch', err)
-        showLaunchFailure('Error During Launch', err.message || 'See console (CTRL + Shift + i) for more details.')
+        loggerLaunchSuite.error('Hiba indítás közben', err)
+        showLaunchFailure('Hiba indítás közben', err.message || 'Lásd a konzolt (CTRL + Shift + i) a további részletekért.')
     })
     fullRepairModule.childProcess.on('close', (code, _signal) => {
         if(code !== 0){
-            loggerLaunchSuite.error(`Full Repair Module exited with code ${code}, assuming error.`)
-            showLaunchFailure('Error During Launch', 'See console (CTRL + Shift + i) for more details.')
+            loggerLaunchSuite.error(`Teljes Javító Modul kilépett a(z) ${code} kóddal, valószínűleg hiba.`)
+            showLaunchFailure('Hiba indítás közben', 'Lásd a konzolt (CTRL + Shift + i) a további részletekért.')
         }
     })
 
-    loggerLaunchSuite.info('Validating files.')
-    setLaunchDetails('Validating file integrity..')
+    loggerLaunchSuite.info('Fájlok ellenőrzése.')
+    setLaunchDetails('Fájl integritás ellenőrzése..')
     let invalidFileCount = 0
     try {
         invalidFileCount = await fullRepairModule.verifyFiles(percent => {
@@ -512,15 +513,15 @@ async function dlAsync(login = true) {
         })
         setLaunchPercentage(100)
     } catch (err) {
-        loggerLaunchSuite.error('Error during file validation.')
-        showLaunchFailure('Error During File Verification', err.displayable || 'See console (CTRL + Shift + i) for more details.')
+        loggerLaunchSuite.error('Hiba fájl ellenőrzés közben.')
+        showLaunchFailure('Hiba fájl ellenőrzés közben', err.displayable || 'Lásd a konzolt (CTRL + Shift + i) a további részletekért.')
         return
     }
     
 
     if(invalidFileCount > 0) {
-        loggerLaunchSuite.info('Downloading files.')
-        setLaunchDetails('Downloading files..')
+        loggerLaunchSuite.info('Fájlok letöltése.')
+        setLaunchDetails('Fájlok letöltése..')
         setLaunchPercentage(0)
         try {
             await fullRepairModule.download(percent => {
@@ -528,12 +529,12 @@ async function dlAsync(login = true) {
             })
             setDownloadPercentage(100)
         } catch(err) {
-            loggerLaunchSuite.error('Error during file download.')
-            showLaunchFailure('Error During File Download', err.displayable || 'See console (CTRL + Shift + i) for more details.')
+            loggerLaunchSuite.error('Hiba fájl letöltés közben.')
+            showLaunchFailure('Hiba fájl letöltés közben', err.displayable || 'Lásd a konzolt (CTRL + Shift + i) a további részletekért.')
             return
         }
     } else {
-        loggerLaunchSuite.info('No invalid files, skipping download.')
+        loggerLaunchSuite.info('Fájlok rendben vannak, letöltés kihagyása.')
     }
 
     // Remove download bar.
@@ -541,7 +542,7 @@ async function dlAsync(login = true) {
 
     fullRepairModule.destroyReceiver()
 
-    setLaunchDetails('Preparing to launch..')
+    setLaunchDetails('Indítás előkészítése..')
 
     const mojangIndexProcessor = new MojangIndexProcessor(
         ConfigManager.getCommonDirectory(),
@@ -557,17 +558,18 @@ async function dlAsync(login = true) {
 
     if(login) {
         const authUser = ConfigManager.getSelectedAccount()
-        loggerLaunchSuite.info(`Sending selected account (${authUser.displayName}) to ProcessBuilder.`)
+        loggerLaunchSuite.info(`Kiválasztott fiók elküldése (${authUser.displayName}) a ProcessBuilder-nek.`)
         let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
-        setLaunchDetails('Launching game..')
+        setLaunchDetails('Játék indítása..')
 
         // const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
-        const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} joined the game`)
+        // const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} joined the game`)
+        const SERVER_JOINED_REGEX = new RegExp('Sikeresen bejelentkeztél.')
 
         const onLoadComplete = () => {
             toggleLaunchArea(false)
             if(hasRPC){
-                DiscordWrapper.updateDetails('Loading game..')
+                DiscordWrapper.updateDetails('Játék betöltése..')
                 proc.stdout.on('data', gameStateChange)
             }
             proc.stdout.removeListener('data', tempListener)
@@ -594,17 +596,17 @@ async function dlAsync(login = true) {
         const gameStateChange = function(data){
             data = data.trim()
             if(SERVER_JOINED_REGEX.test(data)){
-                DiscordWrapper.updateDetails('Exploring the Realm!')
+                DiscordWrapper.updateDetails('Chronika szerverein lazul.')
             } else if(GAME_JOINED_REGEX.test(data)){
-                DiscordWrapper.updateDetails('Sailing to Westeros!')
+                DiscordWrapper.updateDetails('Főmenü')
             }
         }
 
         const gameErrorListener = function(data){
             data = data.trim()
-            if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
-                loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
-                showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/dscalzi/HeliosLauncher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
+            if(data.indexOf('Nem sikerült betölteni a fő osztályt net.minecraft.launchwrapper.Launch') > -1){
+                loggerLaunchSuite.error('Játékindítás meghiúsult, LaunchWrapper nem töltődött le megfelelően.')
+                showLaunchFailure('Hiba indítás közben', 'A fő fájl, LaunchWrapper, nem töltődött le megfelelően. Ennek eredményeképp a játék nem tudott elindulni.<br><br>Próbáld meg kikapcsolni a vírusírtót ideiglenesen és próbáld meg újra elindítani a játékot.<br><br>Ha van egy kis időd, kérlek <a href="https://github.com/ChronikaMC/ChronikaLauncher/issues">jelezd a hibát</a> és tudasd velünk milyen vírusirtót használsz. Megpróbáljuk megoldani a problémát.')
             }
         }
 
@@ -616,10 +618,11 @@ async function dlAsync(login = true) {
             proc.stdout.on('data', tempListener)
             proc.stderr.on('data', gameErrorListener)
 
-            setLaunchDetails('Done. Enjoy the server!')
+            setLaunchDetails('Kész. Élvezd a szervert!')
 
             // Init Discord Hook
-            if(distro.rawDistribution.discord != null && serv.rawServerdiscord != null){
+            console.log('DISCORD:', serv.rawServer.discord)
+            if(distro.rawDistribution.discord != null && serv.rawServer.discord != null){
                 DiscordWrapper.initRPC(distro.rawDistribution.discord, serv.rawServer.discord)
                 hasRPC = true
                 proc.on('close', (code, signal) => {
@@ -632,8 +635,8 @@ async function dlAsync(login = true) {
 
         } catch(err) {
 
-            loggerLaunchSuite.error('Error during launch', err)
-            showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
+            loggerLaunchSuite.error('Hiba indítás közben', err)
+            showLaunchFailure('Hiba indítás közben', 'Lásd a konzolt (CTRL + Shift + i) a további részletekért.')
 
         }
     }
@@ -740,7 +743,7 @@ let newsLoadingListener = null
  */
 function setNewsLoading(val){
     if(val){
-        const nLStr = 'Checking for News'
+        const nLStr = 'Hírek Betöltése'
         let dotStr = '..'
         nELoadSpan.innerHTML = nLStr + dotStr
         newsLoadingListener = setInterval(() => {
@@ -967,7 +970,7 @@ async function loadNews(){
 
     const distroData = await DistroAPI.getDistribution()
     if(!distroData.rawDistribution.rss) {
-        loggerLanding.debug('No RSS feed provided.')
+        loggerLanding.debug('Nincs RSS hírfolyam.')
         return null
     }
 
@@ -986,14 +989,14 @@ async function loadNews(){
                     const el = $(items[i])
 
                     // Resolve date.
-                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
+                    const date = new Date(el.find('pubDate').text()).toLocaleDateString('hu-HU', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
                     // Resolve comments.
-                    let comments = el.find('slash\\:comments').text() || '0'
-                    comments = comments + ' Comment' + (comments === '1' ? '' : 's')
+                    let comments = el.find('comments').text() || '0'
+                    comments = comments + ' Komment'
 
                     // Fix relative links in content.
-                    let content = el.find('content\\:encoded').text()
+                    let content = el.find('content').text()
                     let regex = /src="(?!http:\/\/|https:\/\/)(.+?)"/g
                     let matches
                     while((matches = regex.exec(content))){
@@ -1002,7 +1005,7 @@ async function loadNews(){
 
                     let link   = el.find('link').text()
                     let title  = el.find('title').text()
-                    let author = el.find('dc\\:creator').text()
+                    let author = el.find('author').text()
 
                     // Generate article.
                     articles.push(

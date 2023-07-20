@@ -21,7 +21,8 @@ const VIEWS = {
     login: '#loginContainer',
     settings: '#settingsContainer',
     welcome: '#welcomeContainer',
-    waiting: '#waitingContainer'
+    waiting: '#waitingContainer',
+    offline: '#offlineLoginContainer'
 }
 
 // The currently shown view container.

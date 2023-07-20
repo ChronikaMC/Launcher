@@ -1,0 +1,44 @@
+<div id="offlineLoginContainer" class="loginContainer" style="display: none;">
+    <div id="offlineLoginCancelContainer" class="loginCancelContainer" style="display: none;">
+        <button id="offlineLoginCancelButton" class="loginCancelButton">
+            <div id="offlineLoginCancelIcon" class="loginCancelIcon">X</div>
+            <span id="offlineLoginCancelText" class="loginCancelText">Mégse</span>
+        </button>
+    </div>
+    <div id="offlineLoginContent" class="loginContent">
+        <form id="offlineLoginForm" class="loginForm">
+            <img id="offlineLoginImageSeal" class="loginImageSeal" src="assets/images/ChronikaLogo.png"/>
+            <span id="offlineLoginSubheader" class="loginSubheader">OFFLINE BELÉPÉS</span>
+            <div class="loginFieldContainer">
+                <svg class="loginSVG profileSVG" viewBox="40 37 65.36 61.43">
+                    <g>
+                        <path d="M86.77,58.12A13.79,13.79,0,1,0,73,71.91,13.79,13.79,0,0,0,86.77,58.12M97,103.67a3.41,3.41,0,0,0,3.39-3.84,27.57,27.57,0,0,0-54.61,0,3.41,3.41,0,0,0,3.39,3.84Z"/>
+                    </g>
+                </svg>
+                <span class="loginErrorSpan loginEmailError" id="offlineLoginEmailError">* Érvénytelen Érték</span>
+                <input id="offlineLoginUsername" class="loginField loginUsername" type="text" placeholder="EMAIL VAGY FELHASZNÁLÓNÉV"/>
+            </div>
+            <div id="offlineLoginOptions" class="loginOptions">
+                <label id="offlineCheckmarkContainer">
+                    <input id="offlineLoginRememberOption" class="loginRememberOption" type="checkbox" checked>
+                    <span id="offlineLoginRememberText" class="loginSpanDim loginRememberText">jegyezz meg</span>
+                </label>
+            </div>
+            <button id="offlineLoginButton" class="loginButton">
+                <div id="offlineLoginButtonContent" class="loginButtonContent">
+                    BELÉPÉS
+                    <svg id="offlineLoginSVG" class="loginButtonSVG" viewBox="0 0 24.87 13.97">
+                        <defs>
+                            <style>.arrowLine{fill:none;stroke:#FFF;stroke-width:2px;transition: 0.25s ease;}</style>
+                        </defs>
+                        <polyline class="arrowLine" points="0.71 13.26 12.56 1.41 24.16 13.02"/>
+                    </svg>
+                    <div class="circle-loader">
+                        <div class="offlineCheckmark draw"></div>
+                    </div>
+                </div>
+            </button>
+        </form>
+    </div>
+    <script src="./assets/js/scripts/offline.js"></script>
+</div>

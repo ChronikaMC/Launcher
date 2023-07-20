@@ -7,7 +7,7 @@ const logger = LoggerUtil.getLogger('ConfigManager')
 
 const sysRoot = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
-const dataPath = path.join(sysRoot, '.helioslauncher')
+const dataPath = path.join(sysRoot, '.chronikamc')
 
 const launcherDir = require('@electron/remote').app.getPath('userData')
 
@@ -78,10 +78,10 @@ function resolveSelectedRAM(ram) {
 const DEFAULT_CONFIG = {
     settings: {
         game: {
-            resWidth: 1280,
-            resHeight: 720,
+            resWidth: 856,
+            resHeight: 482,
             fullscreen: false,
-            autoConnect: true,
+            autoConnect: false,
             launchDetached: true
         },
         launcher: {
@@ -345,6 +345,26 @@ exports.addMojangAuthAccount = function(uuid, accessToken, username, displayName
         username: username.trim(),
         uuid: uuid.trim(),
         displayName: displayName.trim()
+    }
+    return config.authenticationDatabase[uuid]
+}
+
+/**
+ * Adds an offline account to the database to be stored.
+ * 
+ * @param {string} uuid The uuid of the account.
+ * @param {string} username The username of the account.
+ * 
+ * @returns {Object} The authenticated account object created by this action.
+ */
+exports.addOfflineAuthAccount = function(uuid, username){
+    config.selectedAccount = uuid
+    config.authenticationDatabase[uuid] = {
+        type: 'offline',
+        accessToken: '',
+        username: username.trim(),
+        uuid: uuid.trim(),
+        displayName: username.trim()
     }
     return config.authenticationDatabase[uuid]
 }

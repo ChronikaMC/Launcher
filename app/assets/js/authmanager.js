@@ -308,8 +308,55 @@ exports.validateSelected = async function(){
 
     if(current.type === 'microsoft') {
         return await validateSelectedMicrosoftAccount()
+    } else if(current.type === 'offline') {
+        return true
     } else {
         return await validateSelectedMojangAccount()
     }
     
+}
+
+/**
+ * Generate Offline UUID
+ * @param {string} username 
+ * @returns {string} UUID of offline player
+ */
+exports.generateOfflineUUID = function(username) {
+    const uuidNamespace = 'OfflinePlayer:'
+  
+    // Create a SHA-1 hash of the UUID namespace concatenated with the username
+    const md5 = require('crypto').createHash('md5')
+    md5.update(uuidNamespace + username)
+    const hash = md5.digest('hex')
+  
+    // Insert dashes to form the UUID format
+    const uuid = hash.substring(0, 8) + '-' +
+                 hash.substring(8, 12) + '-' +
+                 hash.substring(12, 16) + '-' +
+                 hash.substring(16, 20) + '-' +
+                 hash.substring(20)
+  
+    return uuid
+}
+
+/**
+ * Add an offline account.
+ * 
+ * @param {string} username The account username.
+ * @returns {<Object>} Promise which resolves the resolved authenticated account object.
+ */
+exports.addOfflineAccount = function(username) {
+    const uuid = exports.generateOfflineUUID(username)
+    const ret = ConfigManager.addOfflineAuthAccount(uuid, username)
+    ConfigManager.save()
+    return ret
+}
+
+/**
+ * Remove offline account
+ * @param {string} uuid 
+ */
+exports.removeOfflineAccount = function(uuid) {
+    ConfigManager.removeAuthAccount(uuid)
+    ConfigManager.save()
 }

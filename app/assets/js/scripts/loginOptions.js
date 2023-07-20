@@ -48,3 +48,11 @@ loginOptionsCancelButton.onclick = (e) => {
         }
     })
 }
+
+loginOptionOffline.onclick = (e) => {
+    switchView(getCurrentView(), VIEWS.offline, 500, 500, () => {
+        offlineLoginViewOnSuccess = loginOptionsViewOnLoginSuccess
+        offlineLoginViewOnCancel = loginOptionsViewOnLoginCancel
+        offlineLoginCancelEnabled(true)
+    })
+}

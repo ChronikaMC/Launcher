@@ -377,7 +377,7 @@ body, button {
 }
 
 /* Main login container. */
-#loginContainer {
+.loginContainer {
     position: relative;
     display: flex;
     justify-content: center;
@@ -389,50 +389,50 @@ body, button {
 }
 
 /* Login cancel button styles. */
-#loginCancelContainer {
+.loginCancelContainer {
     position: absolute;
     top: 5%;
     right: 5%;
 }
 
 /* Login cancel button styles. */
-#loginCancelButton {
+.loginCancelButton {
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
     transition: 0.25s ease;
 }
-#loginCancelButton:hover #loginCancelIcon,
-#loginCancelButton:hover #loginCancelText,
-#loginCancelButton:focus #loginCancelIcon,
-#loginCancelButton:focus #loginCancelText {
+.loginCancelButton:hover .loginCancelIcon,
+.loginCancelButton:hover .loginCancelText,
+.loginCancelButton:focus .loginCancelIcon,
+.loginCancelButton:focus .loginCancelText {
     text-shadow: 0px 0px 20px white;
 }
-#loginCancelButton:hover #loginCancelIcon,
-#loginCancelButton:focus #loginCancelIcon {
+.loginCancelButton:hover .loginCancelIcon,
+.loginCancelButton:focus .loginCancelIcon {
     box-shadow: 0px 0px 20px white;
 }
-#loginCancelButton:active #loginCancelIcon,
-#loginCancelButton:active #loginCancelText {
+.loginCancelButton:active .loginCancelIcon,
+.loginCancelButton:active .loginCancelText {
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75);
     color: rgba(255, 255, 255, 0.75);
     border-color: rgba(255, 255, 255, 0.75);
 }
-#loginCancelButton:active #loginCancelIcon {
+.loginCancelButton:active .loginCancelIcon {
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.75);
 }
-#loginCancelButton:disabled {
+.loginCancelButton:disabled {
     pointer-events: none;
 }
-#loginCancelButton:disabled #loginCancelIcon,
-#loginCancelButton:disabled #loginCancelText {
+.loginCancelButton:disabled .loginCancelIcon,
+.loginCancelButton:disabled .loginCancelText {
     color: rgba(255, 255, 255, 0.75);
     border-color: rgba(255, 255, 255, 0.75);
 }
 
 /* The X in a circle icon for the cancel button. */
-#loginCancelIcon {
+.loginCancelIcon {
     border-radius: 50%;
     border: 1px solid white;
     box-sizing: border-box;
@@ -445,13 +445,13 @@ body, button {
     transition: 0.25s ease;
 }
 /* Text for the login cancel button. */
-#loginCancelText {
+.loginCancelText {
     font-size: 15px;
     transition: 0.25s ease;
 }
 
 /* Login content wrapper. */
-#loginContent {
+.loginContent {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -460,7 +460,7 @@ body, button {
 }
 
 /* Login form. */
-#loginForm {
+.loginForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -468,35 +468,31 @@ body, button {
 }
 
 /* Login form anchor styles. */
-#loginForm a {
+.loginForm a {
     font-size: 12px;
     color: #848484;
     font-weight: bold;
     text-decoration: none;
     transition: 0.25s ease;
 }
-#loginForm a:hover,
-#loginForm a:focus {
+.loginForm a:hover,
+.loginForm a:focus {
     color: #a2a2a2;
     outline: none;
 }
-#loginForm a:active {
+.loginForm a:active {
     color: #8b8b8b;
 }
 
 /* Logo on login form. */
-#loginImageSeal {
-    border-radius: 50%;
-    border: 2px solid #cad7e1;
-    background: rgba(1, 2, 1, 0.5);
+.loginImageSeal {
     height: 125px;
     width: 125px;
-    box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
     margin-bottom: 20px;
 }
 
 /* Header on login view. */
-#loginSubheader {
+.loginSubheader {
     font-family: 'Avenir Medium';
     margin-bottom: 25px;
     font-size: 12px;
@@ -518,6 +514,7 @@ body, button {
     fill: #fff;
     height: 20px;
     width: 20px;
+    margin-bottom: 5px;
 }
 
 /* Span which displays errors related to login field content. */
@@ -603,13 +600,13 @@ body, button {
 }
 
 /* Remember option text. */
-#loginRememberText {
+.loginRememberText {
     padding-right: 10px;
     transition: 0.25s ease;
 }
 
 /* Login button styles. */
-#loginButton {
+.loginButton {
     background: none;
     font-weight: bold;
     letter-spacing: 2px;
@@ -621,23 +618,23 @@ body, button {
     right: -20px;
     transition: 0.5s ease;
 }
-#loginButton:disabled {
+.loginButton:disabled {
     color: rgba(255, 255, 255, 0.75);
     pointer-events: none;
 }
-#loginButton[loading] {
+.loginButton[loading] {
     color: #fff;
 }
-#loginButton:hover,
-#loginButton:focus {
+.loginButton:hover,
+.loginButton:focus {
     text-shadow: 0px 0px 20px #fff;
     outline: none;
 }
-#loginButton:active {
+.loginButton:active {
     color: #c7c7c7;
     text-shadow:  0px 0px 20px #c7c7c7;
 }
-#loginSVG {
+.loginButtonSVG {
     -webkit-transform: translate3d(0, 0, 0);
     overflow: visible;
     transform: rotate(90deg);
@@ -646,31 +643,31 @@ body, button {
     width: 20px;
     height: 20px;
 }
-#loginButton:hover #loginSVG,
-#loginButton:focus #loginSVG {
+.loginButton:hover .loginButtonSVG,
+.loginButton:focus .loginButtonSVG {
     -webkit-filter: drop-shadow(0px 0px 2px #fff);
 }
-#loginButton:active #loginSVG .arrowLine {
+.loginButton:active .loginButtonSVG .arrowLine {
     stroke: #c7c7c7;
 }
-#loginButton:active #loginSVG {
+.loginButton:active .loginButtonSVG {
     -webkit-filter: drop-shadow(0px 0px 2px #c7c7c7);
 }
-#loginButton:disabled #loginSVG .arrowLine {
+.loginButton:disabled .loginButtonSVG .arrowLine {
     stroke: rgba(255, 255, 255, 0.75);
 }
 
-#loginButtonContent {
+.loginButtonContent {
     display: flex;
     align-items: center;
 }
 
-#loginButton .circle-loader,
-#loginButton[loading] #loginSVG {
+.loginButton .circle-loader,
+.loginButton[loading] .loginButtonSVG {
     display: none;
 }
-#loginButton[loading] .circle-loader,
-#loginButton #loginSVG {
+.loginButton[loading] .circle-loader,
+.loginButton .loginButtonSVG {
     display: initial;
 }
 
@@ -772,7 +769,7 @@ body, button {
 }*/
 
 /* Disclaimer container. */
-#loginDisclaimer {
+.loginDisclaimer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -780,7 +777,7 @@ body, button {
 }
 
 /* Add spacing between register anchor and disclaimer. */
-#loginRegisterSpan {
+.loginRegisterSpan {
     margin-bottom: 5px;
 }
 
@@ -831,7 +828,7 @@ body, button {
     border-color: #a2a2a2;
 }
 /* On keydown, darken the checkbox a bit. */
-#checkmarkContainer input:active ~ *:not(#loginRememberText) {
+#checkmarkContainer input:active ~ *:not(.loginRememberText) {
     color: #8d8d8d;
     border-color: #8d8d8d;
 }
@@ -861,7 +858,7 @@ body, button {
 }
 
 /*
-#login_filter {
+.login_filter {
     height: calc(100% - 22px);
     width: 100%;
     z-index: 9000;
@@ -994,7 +991,7 @@ body, button {
 .loginOptionButton {
     background: rgba(0, 0, 0, 0.25);
     border: 1px solid rgba(126, 126, 126, 0.57);
-    border-radius: 3px;
+    border-radius: 15px;
     height: 50px;
     width: 100%;
     text-align: left;
@@ -1012,12 +1009,12 @@ body, button {
     text-shadow: 0px 0px 20px white;
 }
 
-#loginOptionCancelContainer {
+.loginOptionCancelContainer {
     position: absolute;
     bottom: -100px;
 }
 
-#loginOptionCancelButton {
+.loginOptionCancelButton {
     background: none;
     border: none;
     padding: 2px 0px;
@@ -1028,15 +1025,15 @@ body, button {
     outline: none;
     transition: 0.25s ease;
 }
-#loginOptionCancelButton:hover,
-#loginOptionCancelButton:focus {
+.loginOptionCancelButton:hover,
+.loginOptionCancelButton:focus {
     text-shadow: 0px 0px 20px lightgrey;
 }
-#loginOptionCancelButton:active {
+.loginOptionCancelButton:active {
     text-shadow: 0px 0px 20px rgba(211, 211, 211, 0.75);
     color: rgba(211, 211, 211, 0.75);
 }
-#loginOptionCancelButton:disabled {
+.loginOptionCancelButton:disabled {
     color: rgba(211, 211, 211, 0.75);
     pointer-events: none;
 }
@@ -2456,7 +2453,7 @@ input:checked + .toggleSwitchSlider:before {
 /* Upper content container. */
 #landingContainer > #upper {
     position: relative;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     top: 0px;
     height: 77%;
     display: flex;
@@ -2486,7 +2483,7 @@ input:checked + .toggleSwitchSlider:before {
 }
 #landingContainer > #lower > #left {
     position: relative;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     top: 0px;
     height: 100%;
     width: 33%;
@@ -2502,7 +2499,7 @@ input:checked + .toggleSwitchSlider:before {
 }
 #landingContainer > #lower > #center {
     position: relative;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     top: 0px;
     height: 100%;
     width: 34%;
@@ -2512,12 +2509,12 @@ input:checked + .toggleSwitchSlider:before {
 #landingContainer > #lower > #center #content {
     position: relative;
     z-index: 500;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     top: 10px;
 }
 #landingContainer > #lower > #right {
     position: relative;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     top: 0px;
     height: 100%;
     width: 33%;
@@ -2536,7 +2533,7 @@ input:checked + .toggleSwitchSlider:before {
     top: 100%;
     height: 100%;
     width: 100%;
-    transition: top 2s ease;
+    transition: top 0.5s ease;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -2858,7 +2855,6 @@ input:checked + .toggleSwitchSlider:before {
     height: 70px;
     width: auto;
     position: relative;
-    border: 2px solid white;
     box-sizing: border-box;
     border-radius: 50%;
 }
@@ -2979,6 +2975,14 @@ input:checked + .toggleSwitchSlider:before {
     box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
     overflow: hidden;
     position: relative;
+}
+
+/* User profile avatar image */
+#avatarImage {
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    margin-bottom: -58px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -3181,7 +3185,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Style for a general label on the bottom of the landing view. */
 .bot_label {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 1px;
     font-weight: bold;
     text-shadow: 0px 0px 0px #bebcbb;
@@ -3209,7 +3213,7 @@ input:checked + .toggleSwitchSlider:before {
 /* Span which displays the player count of the selected server. */
 #player_count {
     color: #949494;
-    font-size: 8px;
+    font-size: 11px;
     font-weight: 900;
     text-shadow: 0px 0px 20px #949494;
     margin-left: 10px;
@@ -3687,6 +3691,7 @@ input:checked + .toggleSwitchSlider:before {
     cursor: pointer;
     position: relative;
     background: rgba(131, 131, 131, 0.25);
+    border-radius: 15px;
 }
 .serverListing[selected] {
     cursor: default;
@@ -3747,7 +3752,6 @@ input:checked + .toggleSwitchSlider:before {
 /* Server listing image. */
 .serverListingImg {
     margin: 0px 10px 0px 5px;
-    border: 1px solid #fff;
     height: 50px;
     width: 50px;
 }
@@ -3791,9 +3795,9 @@ input:checked + .toggleSwitchSlider:before {
     align-items: center;
     line-height: 12px;
     height: 12px;
-    border-radius: 2px;
+    border-radius: 6px;
     background: rgba(31, 140, 11, 0.8);
-    padding: 0px 2px;
+    padding: 0px 5px;
 }
 
 /* The revision version of the server's manifest. */
@@ -3930,26 +3934,11 @@ input:checked + .toggleSwitchSlider:before {
     justify-content: center;
 }
 
-/* Spinner container. */
-#loadSpinnerContainer {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Stationary image for the spinner. */
 #loadCenterImage {
     position: absolute;
     width: 277px;
     height: auto;
-}
-
-/* Rotating image for the spinner. */
-#loadSpinnerImage {
-    width: 280px;
-    height: auto;
-    z-index: 400;
 }
 
 /* Rotating animation for the spinner. */
@@ -3965,4 +3954,9 @@ input:checked + .toggleSwitchSlider:before {
 /* Class which is applied when the spinner image is spinning. */
 .rotating {
     animation: rotating 10s linear infinite;
+}
+
+/* Extra by Chronika */
+#landingPlayerLabel {
+    margin-left: -30px;
 }
