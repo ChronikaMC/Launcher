@@ -1569,7 +1569,7 @@ function populateSettingsUpdateInformation(data){
             settingsUpdateButtonStatus('Letöltés..', true)
         }
     } else {
-        settingsUpdateTitle.innerHTML = 'A legfrisebb verziót használod'
+        settingsUpdateTitle.innerHTML = 'A legfrissebb verziót használod'
         settingsUpdateChangelogCont.style.display = 'none'
         populateVersionInformation(remote.app.getVersion(), settingsUpdateVersionValue, settingsUpdateVersionTitle, settingsUpdateVersionCheck)
         settingsUpdateButtonStatus('Frissítések keresése', false, () => {
