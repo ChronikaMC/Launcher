@@ -606,7 +606,7 @@ async function dlAsync(login = true) {
             data = data.trim()
             if(data.indexOf('Nem sikerült betölteni a fő osztályt net.minecraft.launchwrapper.Launch') > -1){
                 loggerLaunchSuite.error('Játékindítás meghiúsult, LaunchWrapper nem töltődött le megfelelően.')
-                showLaunchFailure('Hiba indítás közben', 'A fő fájl, LaunchWrapper, nem töltődött le megfelelően. Ennek eredményeképp a játék nem tudott elindulni.<br><br>Próbáld meg kikapcsolni a vírusírtót ideiglenesen és próbáld meg újra elindítani a játékot.<br><br>Ha van egy kis időd, kérlek <a href="https://github.com/ChronikaMC/ChronikaLauncher/issues">jelezd a hibát</a> és tudasd velünk milyen vírusirtót használsz. Megpróbáljuk megoldani a problémát.')
+                showLaunchFailure('Hiba indítás közben', 'A fő fájl, LaunchWrapper, nem töltődött le megfelelően. Ennek eredményeképp a játék nem tudott elindulni.<br><br>Próbáld meg kikapcsolni a vírusírtót ideiglenesen és próbáld meg újra elindítani a játékot.<br><br>Ha van egy kis időd, kérlek <a href="https://github.com/ChronikaMC/Launcher/issues">jelezd a hibát</a> és tudasd velünk milyen vírusirtót használsz. Megpróbáljuk megoldani a problémát.')
             }
         }
 
