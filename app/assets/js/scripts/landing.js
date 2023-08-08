@@ -992,8 +992,9 @@ async function loadNews(){
                     const date = new Date(el.find('pubDate').text()).toLocaleDateString('hu-HU', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
                     // Resolve comments.
-                    let comments = el.find('comments').text() || '0'
-                    comments = comments + ' Komment'
+                    /*let comments = el.find('comments').text() || '0'
+                    comments = comments + ' Komment'*/
+                    let comments = ''
 
                     // Fix relative links in content.
                     let content = el.find('content').text()
