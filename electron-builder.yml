@@ -43,6 +43,7 @@ linux:
       arch:
         - 'x64'
         - 'arm64'
+  artifactName: '${productName}-setup-${version}-${arch}.${ext}'
   maintainer: 'Chronika'
   vendor: 'Chronika'
   synopsis: 'Chronika Launcher'
