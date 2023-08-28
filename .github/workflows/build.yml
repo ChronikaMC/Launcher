@@ -42,7 +42,6 @@ jobs:
         with:
           name: dist
           path: |
-            dist/*-unpacked
             dist/*.exe
             dist/*.dmg
             dist/*.AppImage
