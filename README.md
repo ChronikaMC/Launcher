@@ -4,7 +4,7 @@
 
 <em><h5 align="center">(A <a href="https://github.com/dscalzi/HeliosLauncher" title="Helios Launcher">Helios Launcher</a>-ből forkolva)</h5></em>
 
-[<p align="center"><img src="https://img.shields.io/github/actions/workflow/status/ChronikaMC/Launcher/build.yml?branch=master&style=for-the-badge" alt="gh actions">](https://github.com/ChronikaMC/Launcher/actions) [<img src="https://img.shields.io/github/downloads/ChronikaMC/Launcher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/ChronikaMC/Launcher/releases) [<img src="https://img.shields.io/github/release/ChronikaMC/Launcher.svg?style=for-the-badge" alt="downloads">](https://github.com/ChronikaMC/Launcher/releases/latest)
+[<p align="center"><img src="https://img.shields.io/github/actions/workflow/status/ChronikaMC/Launcher/build.yml?branch=master&style=for-the-badge" alt="gh actions">](https://github.com/ChronikaMC/Launcher/actions) [<img src="https://img.shields.io/github/downloads/ChronikaMC/Launcher/total.svg?style=for-the-badge&label=LET%C3%96LT%C3%89SEK" alt="downloads">](https://github.com/ChronikaMC/Launcher/releases) [<img src="https://img.shields.io/github/release/ChronikaMC/Launcher.svg?style=for-the-badge&label=%20VERZI%C3%93" alt="stabil verzió">](https://github.com/ChronikaMC/Launcher/releases/latest)
 
 <p align="center">Csatlakozz egyszerűen java és modok telepítése nélkül alig pár kattintással!</p>
 
