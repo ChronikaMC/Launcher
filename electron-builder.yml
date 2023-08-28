@@ -1,5 +1,5 @@
 appId: 'chronikalauncher'
-productName: 'Chronika Launcher'
+productName: 'Chronika-Launcher'
 artifactName: '${productName}-setup-${version}.${ext}'
 
 copyright: 'Copyright © 2023 Chronika'
