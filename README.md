@@ -1,104 +1,105 @@
 <p align="center"><img src="./app/assets/images/ChronikaLogo.png" width="150px" height="150px" alt="aventium softworks"></p>
 
-<h1 align="center">Helios Launcher</h1>
+<h1 align="center">Chronika Launcher</h1>
 
-<em><h5 align="center">(formerly Electron Launcher)</h5></em>
+<em><h5 align="center">(A <a href="https://github.com/dscalzi/HeliosLauncher" title="Helios Launcher">Helios Launcher</a>-ből forkolva)</h5></em>
 
-[<p align="center"><img src="https://img.shields.io/github/actions/workflow/status/dscalzi/HeliosLauncher/build.yml?branch=master&style=for-the-badge" alt="gh actions">](https://github.com/dscalzi/HeliosLauncher/actions) [<img src="https://img.shields.io/github/downloads/dscalzi/HeliosLauncher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/dscalzi/HeliosLauncher/releases) <img src="https://forthebadge.com/images/badges/winter-is-coming.svg"  height="28px" alt="winter-is-coming"></p>
+[<p align="center"><img src="https://img.shields.io/github/actions/workflow/status/ChronikaMC/Launcher/build.yml?branch=master&style=for-the-badge" alt="gh actions">](https://github.com/ChronikaMC/Launcher/actions) [<img src="https://img.shields.io/github/downloads/ChronikaMC/Launcher/total.svg?style=for-the-badge&label=LET%C3%96LT%C3%89SEK" alt="downloads">](https://github.com/ChronikaMC/Launcher/releases) [<img src="https://img.shields.io/github/release/ChronikaMC/Launcher.svg?style=for-the-badge&label=%20VERZI%C3%93" alt="stabil verzió">](https://github.com/ChronikaMC/Launcher/releases/latest)
 
-<p align="center">Join modded servers without worrying about installing Java, Forge, or other mods. We'll handle that for you.</p>
+<p align="center">Csatlakozz egyszerűen java és modok telepítése nélkül alig pár kattintással!</p>
 
 ![Screenshot 1](https://i.imgur.com/6o7SmH6.png)
 ![Screenshot 2](https://i.imgur.com/x3B34n1.png)
 
-## Features
+## Funkciók
 
-* 🔒 Full account management.
-  * Add multiple accounts and easily switch between them.
-  * Microsoft (OAuth 2.0) + Mojang (Yggdrasil) authentication fully supported.
-  * Credentials are never stored and transmitted directly to Mojang.
-* 📂 Efficient asset management.
-  * Receive client updates as soon as we release them.
-  * Files are validated before launch. Corrupt or incorrect files will be redownloaded.
-* ☕ **Automatic Java validation.**
-  * If you have an incompatible version of Java installed, we'll install the right one *for you*.
-  * You do not need to have Java installed to run the launcher.
-* 📰 News feed natively built into the launcher.
-* ⚙️ Intuitive settings management, including a Java control panel.
-* Supports all of our servers.
-  * Switch between server configurations with ease.
-  * View the player count of the selected server.
-* Automatic updates. That's right, the launcher updates itself.
-*  View the status of Mojang's services.
+* 🔒 Teljes fiók kezelés.
+  * Adj hozzá akár több fiókot és könnyen váltogathatsz közöttük.
+  * Microsoft (OAuth 2.0) + Mojang (Yggdrasil) hitelesítés teljes támogatása.
+  * A bejelentkezési adatokat nem tároljuk, közvetlen a Mojang felé továbbítjuk.
+* 📂 Hatékony frissítéskezelés.
+  * Automatikusan frissül amint megjelenik egy új verzió.
+  * A fájlok ellenőrzésre kerülnek indítás előtt. A hibás fájlok újra le lesznek töltve.
+* ☕ **Automatikus Java ellenőrzés.**
+  * Mindig a *neked megfelelő* java verziót telepítjük.
+  * Nem kell Java-t telepítened a launcher futtatásához.
+* 📰 Beépített hírek a launcherben.
+* ⚙️ Intuitív beállításkezelés, Java beállításokkal együtt.
+* Támogatja a szervereinket.
+  * Könnyen váltogathatsz a verziók között.
+  * Kiírja a szerveren lévő online játékosokat.
+* Automatikus frissítések. Igen, a launcher saját magát frissíti.
+*  Mojang szolgáltatásainak állapotának megtekintése.
 
-This is not an exhaustive list. Download and install the launcher to gauge all it can do!
+És ez még nem a teljes lista. Töltsd le és telepítsd a launchert, és fedezd fel!
 
-#### Need Help? [Check the wiki.][wiki]
+#### Segítségre van szükséged? [Látogass el a Discord szerverünkre.](https://dc.chronika.hu)
 
-#### Like the project? Leave a ⭐ star on the repository!
+#### Tetszik a projektünk? Hagyj egy ⭐ csillagot rajta!
 
-## Downloads
+## Letöltés
 
-You can download from [GitHub Releases](https://github.com/dscalzi/HeliosLauncher/releases)
+A launchert le tudod tölteni a [GitHub Releases](https://github.com/ChronikaMC/Launcher/releases) oldalról
 
-#### Latest Release
+#### Legújabb stabil verzió
 
-[![](https://img.shields.io/github/release/dscalzi/HeliosLauncher.svg?style=flat-square)](https://github.com/dscalzi/HeliosLauncher/releases/latest)
+[![](https://img.shields.io/github/release/ChronikaMC/Launcher.svg?style=flat-square)](https://github.com/ChronikaMC/Launcher/releases/latest)
 
-#### Latest Pre-Release
-[![](https://img.shields.io/github/release/dscalzi/HeliosLauncher/all.svg?style=flat-square)](https://github.com/dscalzi/HeliosLauncher/releases)
+#### Legújabb bétaverzió
+[![](https://img.shields.io/github/release/ChronikaMC/Launcher/all.svg?style=flat-square)](https://github.com/ChronikaMC/Launcher/releases)
 
-**Supported Platforms**
+**Támogatott Platformok**
 
-If you download from the [Releases](https://github.com/dscalzi/HeliosLauncher/releases) tab, select the installer for your system.
+Ha a [Releases](https://github.com/ChronikaMC/Launcher/releases) oldalról töltöd le, válaszd a rendszerednek megfelelő telepítőt (lásd lentebb).
 
-| Platform | File |
+| Platform | Fájl |
 | -------- | ---- |
-| Windows x64 | `Helios-Launcher-setup-VERSION.exe` |
-| macOS x64 | `Helios-Launcher-setup-VERSION-x64.dmg` |
-| macOS arm64 | `Helios-Launcher-setup-VERSION-arm64.dmg` |
-| Linux x64 | `Helios-Launcher-setup-VERSION.AppImage` |
+| Windows x64 | `Chronika-Launcher-setup-VERSION.exe` |
+| macOS x64 | `Chronika-Launcher-setup-VERSION-x64.dmg` |
+| macOS arm64 | `Chronika-Launcher-setup-VERSION-arm64.dmg` |
+| Linux x64 | `Chronika-Launcher-setup-VERSION-x86_64.AppImage` |
+| Linux arm64 | `Chronika-Launcher-setup-VERSION-arm64.AppImage` |
 
-## Console
+## Konzol
 
-To open the console, use the following keybind.
+A konzol megnyitásához használd a következő kombinációt:
 
 ```console
 ctrl + shift + i
 ```
 
-Ensure that you have the console tab selected. Do not paste anything into the console unless you are 100% sure of what it will do. Pasting the wrong thing can expose sensitive information.
+Győződj meg róla, hogy a Console fül van nyitva. Ne illessz be semmit a konzolba, hacsak nem vagy benne 100% biztos, hogy tudod mit csinál. Akár fel is törhetnek ezzel.
 
-#### Export Output to a File
+#### Kimenet mentése fájlba
 
-If you want to export the console output, simply right click anywhere on the console and click **Save as..**
+Ha le akarod menteni a konzol kimenetet, egyszerűen kattints jobb egérgombbal valahová a konzolra, majd kattints a **Save as..** gombra.
 
 ![console example](https://i.imgur.com/T5e73jP.png)
 
 
-## Development
+## Fejlesztés
 
-This section details the setup of a basic developmentment environment.
+Lentebb részletezzük a fejlesztés folyamatát, ha közre szeretnél működni a projektben, vagy saját magadnak szeretnéd buildelni a launchert.
 
-### Getting Started
+### Előkészületek
 
-**System Requirements**
+**Rendszerkövetelmények**
 
 * [Node.js][nodejs] v18
 
 ---
 
-**Clone and Install Dependencies**
+**Projekt klónozása és a függősségek telepítése**
 
 ```console
-> git clone https://github.com/dscalzi/HeliosLauncher.git
+> git clone https://github.com/ChronikaMC/Launcher.git
 > cd HeliosLauncher
 > npm install
 ```
 
 ---
 
-**Launch Application**
+**Indítás**
 
 ```console
 > npm start
@@ -106,31 +107,31 @@ This section details the setup of a basic developmentment environment.
 
 ---
 
-**Build Installers**
+**Telepítők buildelése**
 
-To build for your current platform.
+Buildelés saját platformra:
 
 ```console
 > npm run dist
 ```
 
-Build for a specific platform.
+Buildelés specifikus platformra:
 
-| Platform    | Command              |
+| Platform    | Parancs              |
 | ----------- | -------------------- |
 | Windows x64 | `npm run dist:win`   |
 | macOS       | `npm run dist:mac`   |
-| Linux x64   | `npm run dist:linux` |
+| Linux       | `npm run dist:linux` |
 
-Builds for macOS may not work on Windows/Linux and vice-versa.
+MacOS-re való buildelés nem működik Windows/Linux alatt, és fordítva sem.
 
 ---
 
 ### Visual Studio Code
 
-All development of the launcher should be done using [Visual Studio Code][vscode].
+A fejlesztéshez a [Visual Studio Code][vscode] használata ajánlott.
 
-Paste the following into `.vscode/launch.json`
+Másold be a következőt a `.vscode/launch.json` fájlba:
 
 ```JSON
 {
@@ -163,41 +164,42 @@ Paste the following into `.vscode/launch.json`
 }
 ```
 
-This adds two debug configurations.
+Ez két debug konfigurációt fog hozzáadni.
 
 #### Debug Main Process
 
-This allows you to debug Electron's [main process][mainprocess]. You can debug scripts in the [renderer process][rendererprocess] by opening the DevTools Window.
+Ez lehetővé teszi a hibakeresést a [fő folyamaton][mainprocess]. A [frontend folyamatokat][rendererprocess] a fejlesztői eszközökkel tudod megvizsgálni.
 
 #### Debug Renderer Process
 
-This allows you to debug Electron's [renderer process][rendererprocess]. This requires you to install the [Debugger for Chrome][chromedebugger] extension.
+Ez lehetővé teszi a hibakeresést a [frontend folyamatokon][rendererprocess]. Ehhez telepítened kell a [Debugger for Chrome][chromedebugger] bővítményt.
 
-Note that you **cannot** open the DevTools window while using this debug configuration. Chromium only allows one debugger, opening another will crash the program.
-
----
-
-### Note on Third-Party Usage
-
-Please give credit to the original author and provide a link to the original source. This is free software, please do at least this much.
-
-For instructions on setting up Microsoft Authentication, see https://github.com/dscalzi/HeliosLauncher/blob/master/docs/MicrosoftAuth.md.
+Megjegyzés: **nem tudod** megnyitni a fejlesztői ablakot amíg ez a hibakeresési konfiguráció aktív. Chromium csak egy debuggert enged, egy második megnyitása összeomláshoz vezethet.
 
 ---
 
-## Resources
+### Ha felhasználod a projektet
 
-* [Wiki][wiki]
-* [Nebula (Create Distribution.json)][nebula]
-* [v2 Rewrite Branch (Inactive)][v2branch]
+Nevezd meg az eredeti készítőt és jelezd egy linkkel az eredeti forrást.  
+Ez egy szabad szoftver, legalább ennyivel tiszteld meg.
 
-The best way to contact the developers is on Discord.
-
-[![discord](https://discordapp.com/api/guilds/211524927831015424/embed.png?style=banner3)][discord]
+A Microsoft Hitelesítés beállításához lásd https://github.com/ChronikaMC/Launcher/blob/master/docs/MicrosoftAuth.md.
 
 ---
 
-### See you ingame.
+## Linkek
+
+* [Helios Launcher](https://github.com/dscalzi/HeliosLauncher)
+* [Helios Launcher Wiki][wiki]
+* [Nebula (Distribution.json létrehozása)][nebula]
+
+Ha fel szeretnéd venni velünk a kapcsolatot, azt Discordon megteheted.
+
+[![discord](https://discordapp.com/api/guilds/556817619844464650/embed.png?style=banner3)][discord]
+
+---
+
+### Jó szórakozást kívánunk!
 
 
 [nodejs]: https://nodejs.org/en/ 'Node.js'
@@ -205,7 +207,6 @@ The best way to contact the developers is on Discord.
 [mainprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes 'Main Process'
 [rendererprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes 'Renderer Process'
 [chromedebugger]: https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome 'Debugger for Chrome'
-[discord]: https://discord.gg/zNWUXdt 'Discord'
+[discord]: https://dc.chronika.hu 'Discord'
 [wiki]: https://github.com/dscalzi/HeliosLauncher/wiki 'wiki'
 [nebula]: https://github.com/dscalzi/Nebula 'dscalzi/Nebula'
-[v2branch]: https://github.com/dscalzi/HeliosLauncher/tree/ts-refactor 'v2 branch'
