@@ -40,10 +40,16 @@ jobs:
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: dist
+          name: launcher-dist
           path: |
             dist/*.exe
             dist/*.dmg
             dist/*.AppImage
             dist/*.blockmap
             dist/latest*.yml
+      - name: Archive unpacked build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: launcher-unpacked-dist
+          path: |
+            dist/*-unpacked
